@@ -9,7 +9,23 @@
 from random import randint
 
 
-def AI(candies, player):
+def Easy_AI():
+    return randint(1, 29)
+
+
+def Smart_AI(candies):
+    if candies < 29:
+        n = candies
+    else:
+        n = int(candies % (29))
+        if n == 0:
+            n = 1
+        if n > 28:
+            n = 28
+    return n
+
+
+def AI(candies, player, choise):
     if player == 1:
         player = 'PLAYER'
     else:
@@ -20,7 +36,10 @@ def AI(candies, player):
             n = int(
                 input(f'\n{player} turn :\t'))
         else:
-            n = randint(1, 29)
+            if choise == 2:
+                n = Easy_AI()
+            else:
+                n = Smart_AI(candies)
             print(f'\n{player} turn :\t{n}')
         if 0 < n < 29:
             candies -= n
@@ -56,7 +75,7 @@ def PVP(candies, player):
 
 
 try:
-    candies = 200
+    candies = 2021
     player = randint(1, 2)
     choise = int(input(
         '\nEnter number of gamemode:\n\tPvP --> \t"1"\n\tEasy AI -->\t"2"\n\tSmart AI -->\t"3"\t'))
@@ -64,10 +83,8 @@ try:
     print(f'\tTotal sweets:\t{candies}')
     if choise == 1:
         PVP(candies, player)
-    elif choise == 2:
-        AI(candies, player)
     else:
-        pass
+        AI(candies, player, choise)
 
 except ValueError:
     print('Incorrect data! You must enter number, try again!')
