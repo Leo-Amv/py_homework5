@@ -1,0 +1,2 @@
+Encode string -->	AbB3a2C2c5dcf4F3G9Hglhf
+Decode string -->	AbBaaaCCccdddddcfFFFFGGGHHHHHHHHHglhf
